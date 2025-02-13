@@ -8,6 +8,7 @@ import categoryRoutes from "./routes/categoryRoutes.js"
 import cors from "cors";
 import productRoutes from "./routes/productRoutes.js"
 import path from "path"
+import { fileURLToPath } from 'url';
 
 //configure env
 dotenv.config();
@@ -34,6 +35,8 @@ app.get("/",(req,res)=>{
 });
 
 //static files
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 app.use(express.static(path.join(__dirname,'./client/build')));
 
 app.get("*", function(req,res){
